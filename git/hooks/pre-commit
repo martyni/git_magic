@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+import datetime
+import subprocess
+
+tag = datetime.datetime.utcnow().strftime("%Y.%-m.%-d.%-H%M")
+
+subprocess.call(["git", "tag", tag])
