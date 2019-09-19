@@ -2,6 +2,8 @@
 import datetime
 import subprocess
 
-tag = datetime.datetime.utcnow().strftime("%Y.%-m.%-d.%-H%M")
+date = datetime.datetime.utcnow().strftime("%Y.%-m.%-d.%-H%M")
+with open('version','w') as version:
+   version.write(date)
 
-subprocess.call(["git", "tag", tag])
+subprocess.call(["git", "add", "version"])
