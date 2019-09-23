@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 import datetime
 import subprocess
+import re
 
 date = datetime.datetime.utcnow().strftime("%Y.%-m.%-d.%-H%M")
-with open('version','w') as version:
+with open('version.txt','w') as version:
    version.write(date)
 
-subprocess.call(["git", "add", "version"])
+ 
+subprocess.call(["git", "add", "version.txt"])
+subprocess.call(["sed", "-i","s/VERSION = \".*\"/VERSION = \"{}\"/g".format(date),  "setup.py"])
+subprocess.call(["git", "add", "setup.py"])
